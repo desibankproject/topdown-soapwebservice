@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.synergistic.soap.com/customers"
+	xmlns:tns="http://www.synergistic.soap.com/customers" elementFormDefault="qualified">
+	
+<!-- This output xml for  soap operation -->	
+<element name="findCustomerByUsernameResponse" type="tns:CustomerVO"/>
+<!-- This input xml for  soap operation -->	
+<element name="findCustomerByUsernameRequest" type="string"/>	
+
+<!-- This we are defining as a complex type -->
+<complexType name="CustomerVO">
+	<sequence>
+		<element name="username" type="string" minOccurs="1" maxOccurs="1"/>
+		<element name="password" type="string" minOccurs="1" maxOccurs="1"/>
+		<element name="role" type="string" minOccurs="1" maxOccurs="1"/>
+		<element name="gender" type="string" minOccurs="1" maxOccurs="1"/>
+		<element name="email" type="string" minOccurs="1" maxOccurs="1"/>
+		<element name="photo" type="string" minOccurs="1" maxOccurs="1"/>
+		<element name="doe" type="dateTime" minOccurs="0" maxOccurs="1"/>
+	</sequence>
+</complexType>	
+</schema>

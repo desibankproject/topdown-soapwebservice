@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.synergistic.soap.com/customers" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="customers"
+	targetNamespace="http://www.synergistic.soap.com/customers">
+	
+	<wsdl:types>
+		<xsd:schema>
+			<xsd:import namespace="http://www.synergistic.soap.com/customers"
+				schemaLocation="customers.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	
+	<!-- Message is associated with elements define inside the XSD -->
+	<wsdl:message name="FindCustomerByUsernameRequest">
+		<wsdl:part element="tns:findCustomerByUsernameRequest" name="username" />
+	</wsdl:message>
+	
+	<wsdl:message name="FindCustomerByUsernameResponse">
+		<wsdl:part element="tns:findCustomerByUsernameResponse" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:portType name="CustomersJames">
+		<wsdl:operation name="findCustomerByUsername">
+			<wsdl:input message="tns:FindCustomerByUsernameRequest" />
+			<wsdl:output message="tns:FindCustomerByUsernameResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	<wsdl:binding name="CustomersJamesBinding" type="tns:CustomersJames">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="findCustomerByUsername">
+			<soap:operation soapAction="http://www.synergistic.soap.com/customers/findCustomerByUsername" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="CustomersJamesService">
+		<wsdl:port binding="tns:CustomersJamesBinding" name="CustomersJamesPort">
+			<soap:address location="http://www.coming.soon.org/" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
